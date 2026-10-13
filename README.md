@@ -49,8 +49,8 @@ on the [website](https://openroc.6com.group/spec/) and as a
   transports.
 - **Hardware-neutral.** Commands address logical endpoints (`robot.arm-1.joint-3`), not network
   locations or vendor APIs.
-- **Layered by design.** Decision, Action, and Actuation are separate planes with explicit
-  boundaries, so reasoning, behavior, and control evolve independently.
+- **Layered by design.** Action and Actuation are separate planes with explicit boundaries, so
+  intent and control evolve independently.
 - **Two encodings, one meaning.** Human-readable OpenROC-JSON and compact OpenROC-BIN are
   semantically identical and losslessly convertible.
 - **Canonical and deterministic.** Messages have a canonical form, so signatures and digests are
@@ -61,14 +61,13 @@ on the [website](https://openroc.6com.group/spec/) and as a
 ## Ecosystem
 
 All components belong to the **OpenROC** ecosystem. The protocol is called **OpenROC** (not ROC),
-and there is no separate *OpenROC Motion* component — movement and trajectory operations live in
-OpenROC Action and OpenROC Actuation.
+and there is no separate *OpenROC Decision* or *OpenROC Motion* component — decisions, objectives,
+movement, and trajectory operations all live in OpenROC Action and OpenROC Actuation.
 
 | Component | Role |
 | --- | --- |
 | **OpenROC Core** | Message structure, command semantics, and execution lifecycle. |
-| **OpenROC Decision** | AI decisions and objectives — the plane of *why*. |
-| **OpenROC Action** | High-level robot tasks, skills, movements, and trajectories — *what*. |
+| **OpenROC Action** | Objectives, decisions, high-level robot tasks, skills, movements, and trajectories — *what to do, and why*. |
 | **OpenROC Actuation** | Low-level device control — *how*. |
 | **OpenROC-JSON** | Human-readable encoding for tooling, debugging, and configuration. |
 | **OpenROC-BIN** | Compact binary encoding for high-rate and constrained links. |
@@ -81,8 +80,7 @@ carrying a **plane-specific payload**.
 
 | Plane | Question | Output |
 | --- | --- | --- |
-| `decision` | *Why, and under what constraints?* | Objective, goals, authority. |
-| `action` | *What to do?* | Tasks, skills, trajectories. |
+| `action` | *What to do, and why?* | Objectives, tasks, skills, trajectories. |
 | `actuation` | *How, at the hardware?* | Setpoints, modes, limits, timing. |
 
 Commands move through a shared lifecycle — `issued → received → admitted → validated → scheduled
