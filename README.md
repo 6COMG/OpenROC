@@ -121,8 +121,8 @@ what CI checks is what the device enforces.
 
 **Capabilities**
 
-- **Schema authoring.** Write schemas for your robot's actions in readable YAML; the version lives
-  in the file, not the filename.
+- **Schema authoring.** Write schemas for your robot's actions in readable YAML — the single
+  source of truth the rest of the toolkit builds on.
 - **Compile.** `schema compile` verifies the bundle and emits canonical JSON Schema 2020-12 for the
   application layer.
 - **Codegen.** Generate serde-compatible Rust types and C structs, JSON and BIN codecs, and
@@ -166,7 +166,7 @@ openroc-kit = { version = "openroc-beta-1.0", default-features = false, features
 ## Authoring a schema
 
 A schema is an ordinary JSON Schema plus an `x-openroc` block binding it to a plane, verb, and
-skill. Files are named for the skill; the version lives inside the file.
+skill. Files are named for the skill they describe.
 
 ```yaml
 # schemas/action/pick.yaml
