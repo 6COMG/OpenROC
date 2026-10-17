@@ -90,7 +90,7 @@ and `id` makes re-delivery idempotent.
 
 Read more in the [Core](https://openroc.6com.group/spec/#core),
 [Action Stack](https://openroc.6com.group/spec/#action-stack), and
-[Control Stack](https://openroc.6com.group/spec/#control-stack) chapters.
+[Actuation Stack](https://openroc.6com.group/spec/#actuation-stack) chapters.
 
 ## Encodings
 
